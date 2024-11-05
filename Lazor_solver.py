@@ -45,35 +45,30 @@ def dfs_solve(board, blocks, available_positions):
 
 
 if __name__ == "__main__":
-    bff_files = [
-        'dark_1.bff', 'mad_1.bff', 'mad_4.bff', 'mad_7.bff',
-        'numbered_6.bff', 'showstopper_4.bff', 'tiny_5.bff', 'yarn_5.bff'
+    file_name = input("Enter the name of the .bff file to solve (format 'mad_1.bff'): ")
+
+    # Load and parse the specified .bff file
+    parsed_files = load_files([file_name])
+    data = parsed_files[file_name]
+
+    # Initialize the board using the setup function
+    board = setup(data)
+
+    # Get available positions if it shows 'o' in the board
+    available_positions = [
+        (i, index) for index, row in enumerate(data["grid"]) for i, n in enumerate(row) if n == 'o'
     ]
 
-    # Load and parse .bff files
-    parsed_bff_files = load_files(bff_files)
+    # Initialize blocks list
+    blocks = [ReflectBlock((0, 0))] * data["blocks"].get("A", 0) + \
+             [OpaqueBlock((0, 0))] * data["blocks"].get("B", 0) + \
+             [RefractBlock((0, 0))] * data["blocks"].get("C", 0)
 
-    for filename, data in parsed_bff_files.items():
-        print(f"\nSolving for file: {filename}")
+    # Solve the board using DFS
+    solution_board = dfs_solve(board, blocks, available_positions)
 
-        board = setup(data)
-
-        # Get available positions and initialize blocks
-        available_positions = [
-            (i, index) for index, row in enumerate(data["grid"]) for i, cell in enumerate(row) if cell == 'o'
-        ]
-
-        # Initialize blocks list
-        blocks = [ReflectBlock((0, 0))] * data["blocks"].get("A", 0) + \
-                 [OpaqueBlock((0, 0))] * data["blocks"].get("B", 0) + \
-                 [RefractBlock((0, 0))] * data["blocks"].get("C", 0)
-
-        # Solve the board
-        solution_board = dfs_solve(board, blocks, available_positions)
-
-        # Output results
-        if solution_board:
-            print(f"Solution found for {filename}!")
-            solution_board.display()
-        else:
-            print(f"No solution found for {filename}.")
+    if solution_board:
+        print("Solution found!")
+        solution_board.display()
+    else:
+        print("No solution found.")
