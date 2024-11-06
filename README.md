@@ -56,6 +56,10 @@ The `lazor_solver` module is responsible for calculating laser paths and block a
 #### Purpose
 `lazor_solver` is the core algorithm module for the game, responsible for determining the block arrangement that meets the game’s goal. After game initialization, it continuously simulates and tests laser paths until it finds a solution that meets all points requirements.
 
+### 4. `test_lazor_parse`
+
+The unit test of the laser_parse to test the lazer_parse funtion
+
 ---
 
 ## Module Relationships
