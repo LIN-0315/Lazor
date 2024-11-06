@@ -12,6 +12,7 @@ and organizes them into structured data for further processing.
 **Functions**
 - parse_bff(parse_line): Parses the .bff file data to extract grid layout, block types, lasers, and points.
 
+
 '''
 
 
