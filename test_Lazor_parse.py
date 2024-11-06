@@ -7,16 +7,6 @@ Lazor Game Solver - Test Suite for .bff File Parser
 This script contains test cases to verify the functionality of the Lazor game .bff file parser.
 It validates the parsing of grid settings, block types, laser paths, and target points.
 
-**Functions**
-- test_parse_grid():
-    Tests the parsing of grid layout from .bff file input.
-- test_parse_blocks():
-    Tests the parsing of different block types and their counts.
-- test_parse_lasers():
-    Tests the parsing of laser positions and directions.
-- test_parse_points():
-    Tests the parsing of target points for laser intersections.
-
 '''
 import unittest
 from Lazor_parse import load_files
