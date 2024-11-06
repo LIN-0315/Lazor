@@ -8,9 +8,6 @@ This script contains the primary solution DFS algorithm for the Lazor game. It h
 finding valid configurations for placing blocks, tracing laser paths, and checking
 if all target points are hit by the lasers.
 
-**Classes and Functions**
-- Solver: Primary class to handle the Lazor game solving logic.
-- solve: Main method within Solver that finds a solution by placing blocks and tracing lasers.
 
 '''
 
