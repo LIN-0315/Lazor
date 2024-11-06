@@ -17,6 +17,7 @@ if all target points are hit by the lasers.
 from Lazor_parse import load_files
 from Lazor_Board import Board, Laser, ReflectBlock, OpaqueBlock, RefractBlock, Point
 import copy
+import os
 
 
 def setup(data):
@@ -103,3 +104,29 @@ if __name__ == "__main__":
         solution_board.display()
     else:
         print("No solution found.")
+
+def save_solution_to_txt(board, bff_filename):
+    '''
+    Saves the board solution to a text file with the same name as the .bff file.
+    
+    Parameters:
+        board (Board): The final board layout after solving the puzzle.
+        bff_filename (str): The name of the .bff file used to load the board configuration.
+    '''
+    # Derive the solution filename from the .bff filename
+    solution_filename = os.path.splitext(bff_filename)[0] + "_solution.txt"
+    
+    # Prepare the board layout as text
+    lines = []
+    for row in board.grid:
+        line = " ".join(row)
+        lines.append(line)
+    
+    # Write the solution to a text file
+    with open(solution_filename, "w") as file:
+        file.write("\n".join(lines))
+    
+    print(f"Solution saved to {solution_filename}")
+
+# Assuming `board` is the final board with the solution and `bff_file` is the name of the .bff file
+save_solution_to_txt(board, "solution")
