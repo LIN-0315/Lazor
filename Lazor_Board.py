@@ -10,11 +10,6 @@ This script defines the Lazor game board and manages the placement of blocks, la
 **Classes**
 - Board: Represents the game board, including the grid, block management, laser paths, and the functions to manipulate and validate board configurations.
 
-**Functions**
-- __init__: Initializes the board layout and loads block, laser, and target configurations.
-- place_block: Places a block at a specified location on the board.
-- validate_path: Checks if laser paths intersect required target points.
-
 '''
 
 from Lazor_parse import load_files
@@ -23,15 +18,12 @@ from Lazor_parse import load_files
 class Laser:
     """Class representing a laser with position and direction."""
     
-    '''
-    Method __init__.
-    Initializes the board with grid, blocks, lasers, and points.
-
+   '''
+    Class representing a laser with position and direction.
+    
     Parameters:
-        grid_data (list): 2D list defining the game grid layout.
-        blocks (dict): Dictionary of block types and their counts.
-        lasers (list): List of tuples for laser positions and directions.
-        points (list): List of tuples for target points.
+        position (tuple): Initial position of the laser (x, y).
+        direction (tuple): Direction of the laser (vx, vy).
     '''
     
     def __init__(self, x, y, vx, vy):
@@ -47,7 +39,16 @@ class Laser:
 
 
 class Block:
-    """Base class for blocks."""
+    '''
+    Class representing the Lazor game board. Manages grid layout, blocks, lasers, and targets.
+    
+    Parameters:
+        grid_data (list): 2D list representing the board grid layout.
+        blocks (dict): Dictionary of block types and counts.
+        lasers (list): List of Laser objects on the board.
+        targets (list): List of target points that lasers must intersect.
+    '''
+
     def __init__(self, position):
         self.position = position
 
