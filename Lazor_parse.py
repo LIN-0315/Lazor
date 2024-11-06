@@ -9,9 +9,6 @@ This file is responsible for parsing the .bff board configuration file for the L
 It reads grid settings, block configurations, laser positions, and target points from the file,
 and organizes them into structured data for further processing.
 
-**Functions**
-- parse_bff(parse_line): Parses the .bff file data to extract grid layout, block types, lasers, and points.
-
 
 '''
 
